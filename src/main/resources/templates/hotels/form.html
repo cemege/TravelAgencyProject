@@ -10,14 +10,16 @@
     <h1>User Form</h1>
     <div th:fragment="userform(url)">
         <!--/*@thymesVar id="customer" type="java"*/-->
-        <form action="#" th:action="${url}" th:object="${customer}" method="post">
+        <form action="#" th:action="${url}" th:object="${hotel}" method="post">
             <div>
                 <input type="hidden" th:field="*{id}" />
-                <p><label>Name</label><input class="form-control" placeholder="Name" type="text" th:field="*{customer.name}" /></p>
-                <p><label>Age</label><input class="form-control" placeholder="Age" type="number" th:field="*{age}" /></p>
-                <p><label>Gender</label><input class="form-control" placeholder="Gender" type="char" th:field="*{gender}" /></p>
-                <p><label>Email</label><input class="form-control" placeholder="Email" type="email" th:field="*{email}" /></p>
-                <p><label>PhoneNumber</label><input class="form-control" placeholder="PhoneNumber" type="number" th:field="*{phoneNumber}" /></p>
+                <p><label>Name</label><input class="form-control" placeholder="Name" type="text" th:field="*{name}" /></p>
+                <!--<p><label>Location</label><input class="form-control" placeholder="Name" type="text" th:field="*{location}" /></p>-->
+
+                <!--<p><label>Age</label><input class="form-control" placeholder="Age" type="number" th:field="*{age}" /></p>-->
+                <!--<p><label>Gender</label><input class="form-control" placeholder="Gender" type="char" th:field="*{gender}" /></p>-->
+                <!--<p><label>Email</label><input class="form-control" placeholder="Email" type="email" th:field="*{email}" /></p>-->
+                <!--<p><label>PhoneNumber</label><input class="form-control" placeholder="PhoneNumber" type="number" th:field="*{phoneNumber}" /></p>-->
 
             </div>
             <br>
