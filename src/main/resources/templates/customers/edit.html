@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Customer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+</head>
+<body>
+
+
+<div class="container">
+    <h1>Editing User <!--/*@thymesVar id="name" type="java.lang.String"*/-->
+    <span th:text="${customer.name}"></span></h1>
+    <div th:include="customers/form :: userform(@{|/customers/${customer.id}|})"></div>
+</div>
+</body>
+</html>

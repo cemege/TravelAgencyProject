@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class HomeServices {
+public class HotelServices {
 
     @Autowired
     private HotelRepo hotelRepo;
@@ -16,5 +16,11 @@ public class HomeServices {
     public List<Hotel> getAllHotels() {
         return hotelRepo.findAll();
     }
+
+    public void saveHotel(Hotel hotel) {
+        hotelRepo.save(hotel);
+
+    }
+
 
 }

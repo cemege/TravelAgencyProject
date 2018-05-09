@@ -7,12 +7,17 @@ import java.time.LocalTime;
 public class Hotel extends BaseEntity {
 
     private Long managerId;
+    private String name;
     private String location;
     private String phoneNumber;
     private int numberOfRooms;
     private int ratingScore;
     private LocalTime avaliableTime;
 
+
+    public String getName() {
+        return name;
+    }
 
     public Long getManagerId() {
         return managerId;
