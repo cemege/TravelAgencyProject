@@ -34,10 +34,10 @@
             <td><span th:text="${hotel.id}"></span></td>
             <td><span th:text="${hotel.name}"></span></td>
             <td><span th:text="${hotel.location}"></span></a></td>
-            <td><span th:text="${hotel.ratingScore}"></span></td>
             <td><span th:text="${hotel.availableTime}"></span></td>
             <td><span th:text="${hotel.phoneNumber}"></span></td>
             <td><span th:text="${hotel.numberOfRooms}"></span></td>
+            <td><span th:text="${hotel.ratingScore}"></span></td>
             <td><a th:href="@{|/hotels/${hotel.id}/edit|}"><i
                     class="glyphicon glyphicon-pencil"></i></a></td>
             <td><a th:href="@{|/hotels/${hotel.id}/remove|}"><i
