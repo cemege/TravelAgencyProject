@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 @Entity
 public class Reserve extends BaseEntity {
 
+    @OneToOne(cascade = {CascadeType.ALL})
     @ManyToOne
     private Hotel hotel;
 

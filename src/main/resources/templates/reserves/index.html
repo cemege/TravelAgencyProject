@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hotel List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link
+            href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.1/css/bootstrap.min.css"
+            rel="stylesheet" media="screen"/>
+    <script th:src="@{|/js/jquery.js|}"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>Reserves</h1>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>CheckIn</th>
+            <th>CheckOut</th>
+            <th>Payment Type</th>
+            <th>Customer Id</th>
+            <th>Hotel Id</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tr th:each="reserve : ${reserves}">
+            <td><span th:text="${reserve.id}"></span></td>
+            <td><span th:text="${reserve.checkIn}"></span></td>
+            <td><span th:text="${reserve.checkOut}"></span></a></td>
+            <td><span th:text="${reserve.paymentType}"></span></td>
+            <td><span th:text="${reserve.reservationAuthor.id}"></span></a></td>
+            <td><span th:text="${reserve.hotel.id}"></span></a></td>
+
+            <td><a th:href="@{|/reserves/${reserve.id}/edit|}"><i
+                    class="glyphicon glyphicon-pencil"></i></a></td>
+            <td><a th:href="@{|/reserves/${reserve.id}/remove|}"><i
+                    class="glyphicon glyphicon-trash"></i></a></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

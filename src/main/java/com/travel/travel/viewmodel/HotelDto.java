@@ -5,6 +5,7 @@ import com.travel.travel.entity.Hotel;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class HotelDto {
@@ -17,7 +18,7 @@ public class HotelDto {
     private String phoneNumber;
     private Integer numberOfRooms;
     private Integer ratingScore;
-    private String avaliableTime;
+    private String availableTime;
 
     public HotelDto(Hotel hotel) {
 
@@ -28,7 +29,7 @@ public class HotelDto {
         this.phoneNumber = hotel.getPhoneNumber();
         this.numberOfRooms = hotel.getNumberOfRooms();
         this.ratingScore = hotel.getRatingScore();
-        this.avaliableTime = hotel.getAvaliableTime().format(Constants.DateFormat.viewFormatter);
+        this.availableTime = hotel.getAvaliableTime().toString();
 
     }
 
@@ -92,11 +93,11 @@ public class HotelDto {
         this.ratingScore = ratingScore;
     }
 
-    public String getAvaliableTime() {
-        return avaliableTime;
+    public String getAvailableTime() {
+        return availableTime;
     }
 
-    public void setAvaliableTime(String avaliableTime) {
-        this.avaliableTime = avaliableTime;
+    public void setAvailableTime(String avaliableTime) {
+        this.availableTime = avaliableTime;
     }
 }

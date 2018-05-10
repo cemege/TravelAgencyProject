@@ -1,8 +1,9 @@
 package com.travel.travel.controller;
 
-import com.travel.travel.entity.Customer;
+
 import com.travel.travel.entity.Hotel;
-import com.travel.travel.services.HotelServices;
+import com.travel.travel.entity.Reserve;
+import com.travel.travel.services.ReserveService;
 import com.travel.travel.viewmodel.HotelDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,47 +11,41 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.time.LocalTime;
 import java.util.Optional;
 
-@RequestMapping("/hotels")
+@RequestMapping("/reserves")
 @Controller
-public class HotelController {
+public class ReserveController {
 
     @Autowired
-    private HotelServices hotelServices;
+    ReserveService reserveService;
 
-
-    @GetMapping
+    @RequestMapping(method=RequestMethod.GET)
     public String index(Model model) {
-        model.addAttribute("hotels", hotelServices.getAllHotels());
-        return "hotels/index";
+        model.addAttribute("reserves", reserveService.getAllRevers());
+        return "reserves/index";
     }
-
-
 
     @GetMapping("/new")
     public String newPage(Model model){
-        model.addAttribute("hotel",new HotelDto());
-        return "hotels/create";
+        model.addAttribute("reserve",new Reserve());
+        return "reserves/create";
     }
-
-
 
     // POST /users         	- creates a new user
     @PostMapping
-    public String saveIt(@Valid @ModelAttribute HotelDto hotelDto, Model model) {
-        hotelServices.saveHotel(hotelDto);
-        return "redirect:/hotels/";
+    public String saveIt(@Valid @ModelAttribute Reserve reserve, Model model) {
+        reserveService.saveService(reserve);
+        return "redirect:/reserves/";
     }
 
     // GET  /users/{id}/remove 	- removes the user with identifier {id}
     @RequestMapping(value="{id}/remove", method=RequestMethod.GET)
     public String remove(@PathVariable("id") long id, Model model) {
-        Optional<Hotel> customer = hotelServices.findById(id);
-        hotelServices.delete(customer.get());
-        model.addAttribute("hotels", hotelServices.getAllHotels());
-        return "customers/index";
+        Optional<Reserve> reserve = reserveService.findById(id);
+        reserveService.deleteReserve(reserve.get());
+        model.addAttribute("reserves", reserveService.getAllRevers());
+        return "reserves/index";
     }
 
 }

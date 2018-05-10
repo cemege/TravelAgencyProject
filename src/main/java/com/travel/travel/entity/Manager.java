@@ -7,6 +7,8 @@ public class Manager extends BaseEntity {
 
     private String name;
     private String phoneNumber;
+
+
     @ManyToOne
     private Hotel hotel;
 

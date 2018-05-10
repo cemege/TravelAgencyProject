@@ -13,7 +13,7 @@
 <div class="container">
 
     <div class="page-header">
-        <h1>Customer List</h1>
+        <h1>Hotel List</h1>
     </div>
 
     <table class="table table-striped">
@@ -34,13 +34,13 @@
             <td><span th:text="${hotel.id}"></span></td>
             <td><span th:text="${hotel.name}"></span></td>
             <td><span th:text="${hotel.location}"></span></a></td>
-            <td><span th:text="${hotel.avaliableTime}"></span></td>
+            <td><span th:text="${hotel.ratingScore}"></span></td>
+            <td><span th:text="${hotel.availableTime}"></span></td>
             <td><span th:text="${hotel.phoneNumber}"></span></td>
             <td><span th:text="${hotel.numberOfRooms}"></span></td>
-            <td><span th:text="${hotel.ratingScore}"></span></td>
             <td><a th:href="@{|/hotels/${hotel.id}/edit|}"><i
                     class="glyphicon glyphicon-pencil"></i></a></td>
-            <td><a th:href="@{|/customers/${hotel.id}/remove|}"><i
+            <td><a th:href="@{|/hotels/${hotel.id}/remove|}"><i
                     class="glyphicon glyphicon-trash"></i></a></td>
         </tr>
     </table>

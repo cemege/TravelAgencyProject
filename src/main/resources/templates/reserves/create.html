@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create new User</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="page-header"><h1>Register Reserve</h1></div>
+    <div>
+        <div class="container">
+            <h1>User Form</h1>
+            <div th:fragment="userform(url)">
+                <!--/*@thymesVar id="customer" type="java"*/-->
+                <form action="#" th:action="@{/reserves}" th:object="${reserve}" method="post">
+                    <div>
+                        <input type="hidden" th:field="*{id}"/>
+                        <p><label>CheckIn Time</label><input class="form-control" placeholder="Format : 1899-12-31T22:56:56" type="text"
+                                                     th:field="*{checkIn}"/></p>
+                        <p><label>Check Out</label><input class="form-control" placeholder="Format : 1899-12-31T22:56:56" type="text"
+                                                         th:field="*{checkOut}"/></p>
+                        <p><label>Payment Type</label><input class="form-control" placeholder="Payment Type" type="text"
+                                                             th:field="*{paymentType}"/></p>
+                        <p><label>Hotel Id</label><input class="form-control" placeholder="Hotel Id"
+                                                                type="text" th:field="*{hotel.id}"/></p>
+                        <p><label>Customer Id</label><input class="form-control" placeholder="Customer Id" type="text"
+                                                             th:field="*{reservationAuthor.id}"/></p>
+                        </div>
+                    <br>
+                    <p><input class="btn btn-primary" type="submit" value="Submit"/> <input class="btn btn-default"
+                                                                                            type="reset" value="Reset"/>
+                    </p>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

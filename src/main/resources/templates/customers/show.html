@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link
+            href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.1/css/bootstrap.min.css"
+            rel="stylesheet" media="screen"/>
+    <script th:src="@{|/js/jquery.js|}"></script>
+    <title>Customer's Reservation</title>
+</head>
+<body>
+
+<div class="tab-pane" id="tab_default_2">
+    <h4><i class="glyphicon glyphicon-th-list"></i> Approved bookings</h4>
+    <div th:if="${!#lists.isEmpty(reserves)}">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Check-in</th>
+                <th>Check-out</th>
+                <th>Hotel Name</th>
+                <th>Payment Type</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tr th:each="reserve : ${reserves}">
+                <td><span th:text="${reserve.checkIn.dayOfMonth}"></span>
+                    <span th:text="${reserve.checkIn.month}"></span>
+                    <span th:text="${reserve.checkIn.year}"></span></td>
+                <td><span th:text="${reserve.checkOut.dayOfMonth}"></span>
+                    <span th:text="${reserve.checkOut.month}"></span>
+                    <span th:text="${reserve.checkOut.year}"></span></td>
+                <td>
+                    <a th:text="${reserve.hotel.name}"
+                       th:href="@{|/hotels/${reserve.hotel.id}|}"></a>
+                <td><span th:text="${reserve.paymentType}"></span></td>
+                <td><a th:href="@{|/reserves/${reserve.id}/remove|}"><i class="glyphicon glyphicon-trash"></i></a></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

@@ -19,6 +19,10 @@ public class Hotel extends BaseEntity {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Long getManagerId() {
         return managerId;
     }

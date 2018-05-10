@@ -7,7 +7,10 @@ import java.util.List;
 import java.util.Optional;
 
 import com.travel.travel.entity.Customer;
+import com.travel.travel.entity.Reserve;
 import com.travel.travel.repository.CustomerRepository;
+import com.travel.travel.services.CustomerService;
+import com.travel.travel.services.ReserveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,14 +24,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CustomerController {
 
     @Autowired
+    CustomerService customerService;
+
+    @Autowired
     CustomerRepository customerRepository;
+
+    @Autowired
+    ReserveService reserveService;
 
 
     // GET  /users 			- the list of users
 
     @RequestMapping(method=RequestMethod.GET)
     public String index(Model model) {
-        model.addAttribute("customers", customerRepository.findAll());
+        model.addAttribute("customers", customerService.getAllCustomers());
         return "customers/index";
     }
 
@@ -45,7 +54,8 @@ public class CustomerController {
     {
         try{
 
-            customerRepository.save(customer);
+
+            customerService.saveCustomer(customer);
 
             return "redirect:/customers/";
 
@@ -55,29 +65,20 @@ public class CustomerController {
         }
     }
 
-    // GET /login
-    @RequestMapping(value="/login", method=RequestMethod.GET)
-    public String login(Model model) {
-        return "index";
-    }
 
-    // GET  /users/{id} 		- the user with identifier {id}
+    // GET  /customers/{id} 		- the user with identifier {id}
     @RequestMapping(value="{id}", method=RequestMethod.GET)
     public String show(@PathVariable("id") Long id, Model model) {
         Optional<Customer> user = customerRepository.findById(id);
 
-        model.addAttribute("user", user);
-        //model.addAttribute("bookings", getUserBookings(user.getId()));
+        model.addAttribute("customer", user);
+        model.addAttribute("reserves", getUserReserves(user.get().getId()));
         return "customers/show";
     }
 
-    @RequestMapping(value="/me", method=RequestMethod.GET)
-    public String showActiveProfile(Model model)
-    {
-        //Customer user = customerRepository.findById(.getUser().getId());
-        //model.addAttribute("bookings", getUserBookings(user.getId()));
-        //model.addAttribute("user", user);
-        return "users/show";
+    public Iterable<Reserve> getUserReserves(long id) {
+        return reserveService.getUsersReserve(id);
+
     }
 
     /*public Iterable<Booking> getUserBookings(long user_id)
