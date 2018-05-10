@@ -9,9 +9,7 @@ import java.util.List;
 
 public interface ReserveRepo extends CrudRepository<Reserve,Long> {
 
-    @Query(value = "SELECT * FROM reserve r WHERE r.customerid = 'customerIdd'",
-            nativeQuery=true
-    )
-    List<Reserve> findByReservationAuthorId(@Param("searchTerm") Long customerIdd);
+
+    List<Reserve> findByReservationAuthorId(Long customerid);
 
 }

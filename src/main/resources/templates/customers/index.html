@@ -24,7 +24,7 @@
             <th>Gender</th>
             <th>Email</th>
             <th>Phone Number</th>
-            <th></th>
+            <th>Show Reserves</th>
             <th></th>
         </tr>
         </thead>
@@ -34,7 +34,7 @@
             <td><span th:text="${customer.gender}"></span></td>
             <td><span th:text="${customer.email}"></span></td>
             <td><span th:text="${customer.phoneNumber}"></span></td>
-            <td><a th:href="@{|/customers/${customer.id}/edit|}"><i
+            <td><a th:href="@{|/customers/${customer.id}/|}"><i
                     class="glyphicon glyphicon-pencil"></i></a></td>
             <td><a th:href="@{|/customers/${customer.id}/remove|}"><i
                     class="glyphicon glyphicon-trash"></i></a></td>
