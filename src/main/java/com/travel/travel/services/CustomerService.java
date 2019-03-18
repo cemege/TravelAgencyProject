@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.xml.ws.ServiceMode;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -22,6 +23,14 @@ public class CustomerService {
     public void saveCustomer(Customer customer) {
 
         customerRepository.save(customer);
+    }
+
+    public Optional<Customer> getCustomer(long id){
+        return customerRepository.findById(id);
+    }
+
+    public void deleteCustomer(Customer customer){
+        customerRepository.delete(customer);
     }
 
 }

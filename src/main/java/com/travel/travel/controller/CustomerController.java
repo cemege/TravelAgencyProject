@@ -27,9 +27,6 @@ public class CustomerController {
     CustomerService customerService;
 
     @Autowired
-    CustomerRepository customerRepository;
-
-    @Autowired
     ReserveService reserveService;
 
 
@@ -69,7 +66,7 @@ public class CustomerController {
     // GET  /customers/{id} 		- the user with identifier {id}
     @RequestMapping(value="{id}", method=RequestMethod.GET)
     public String show(@PathVariable("id") Long id, Model model) {
-        Optional<Customer> user = customerRepository.findById(id);
+        Optional<Customer> user = customerService.getCustomer(id);
 
         model.addAttribute("customer", user);
         model.addAttribute("reserves", getUserReserves(user.get().getId()));
@@ -99,16 +96,16 @@ public class CustomerController {
     // GET  /users/{id}/remove 	- removes the user with identifier {id}
     @RequestMapping(value="{id}/remove", method=RequestMethod.GET)
     public String remove(@PathVariable("id") long id, Model model) {
-        Optional<Customer> customer = customerRepository.findById(id);
-        customerRepository.delete(customer.get());
-        model.addAttribute("customers", customerRepository.findAll());
+        Optional<Customer> customer = customerService.getCustomer(id);
+        customerService.deleteCustomer(customer.get());
+        model.addAttribute("customers", customerService.getAllCustomers());
         return "customers/index";
     }
 
     // GET /users/{id}/edit - form to edit user
     @RequestMapping(value="{id}/edit", method=RequestMethod.GET)
     public String edit(@PathVariable("id") long id, Model model) {
-        Optional<Customer> user = customerRepository.findById(id);
+        Optional<Customer> user = customerService.getCustomer(id);
         model.addAttribute("customer", user);
         return "customers/edit";
     }
