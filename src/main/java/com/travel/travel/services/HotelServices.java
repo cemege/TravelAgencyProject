@@ -1,7 +1,5 @@
 package com.travel.travel.services;
 
-import com.travel.travel.config.Constants;
-import com.travel.travel.entity.Customer;
 import com.travel.travel.entity.Hotel;
 import com.travel.travel.repository.HotelRepo;
 import com.travel.travel.viewmodel.HotelDto;
@@ -44,7 +42,11 @@ public class HotelServices {
         System.out.println(hotelDto.getAvailableTime());
 
         Date available =  Date.valueOf(hotelDto.getAvailableTime());
-        hotel.setAvaliableTime(available);
+
+        Time test = Time.valueOf("15:12:21");
+
+        hotel.setAvaliableTime(test);
+
 
         System.out.println(available.toLocalDate());
 
