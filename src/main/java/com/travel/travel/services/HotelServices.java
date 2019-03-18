@@ -8,11 +8,12 @@ import com.travel.travel.viewmodel.HotelDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalTime;
-import java.util.ArrayList;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
 
 @Service
 public class HotelServices {
@@ -30,6 +31,7 @@ public class HotelServices {
     }
 
     public Hotel saveHotel(HotelDto hotelDto) {
+        System.out.println(hotelDto.toString() + " Hotel save service called.");
 
         Hotel hotel = new Hotel();
         hotel.setName(hotelDto.getName());
@@ -39,8 +41,12 @@ public class HotelServices {
         hotel.setNumberOfRooms(hotelDto.getNumberOfRooms());
         hotel.setManagerId(hotelDto.getManagerId());
 
-        LocalTime available = LocalTime.parse(hotelDto.getAvailableTime());
+        System.out.println(hotelDto.getAvailableTime());
+
+        Date available =  Date.valueOf(hotelDto.getAvailableTime());
         hotel.setAvaliableTime(available);
+
+        System.out.println(available.toLocalDate());
 
         return hotelRepo.save(hotel);
 

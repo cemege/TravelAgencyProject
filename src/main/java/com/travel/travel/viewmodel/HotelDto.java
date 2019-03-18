@@ -100,4 +100,8 @@ public class HotelDto {
     public void setAvailableTime(String avaliableTime) {
         this.availableTime = avaliableTime;
     }
+
+    public String toString(){
+        return this.name + " " + this.phoneNumber;
+    }
 }
