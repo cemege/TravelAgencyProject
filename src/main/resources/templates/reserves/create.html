@@ -17,9 +17,9 @@
                 <form action="#" th:action="@{/reserves}" th:object="${reserve}" method="post">
                     <div>
                         <input type="hidden" th:field="*{id}"/>
-                        <p><label>CheckIn Time</label><input class="form-control" placeholder="Format : 1899-12-31T22:56:56" type="text"
+                        <p><label>CheckIn Time</label><input class="form-control" placeholder="Format : 1899-12-31T22:56:56" type="datetime-local"
                                                      th:field="*{checkIn}"/></p>
-                        <p><label>Check Out</label><input class="form-control" placeholder="Format : 1899-12-31T22:56:56" type="text"
+                        <p><label>Check Out</label><input class="form-control" placeholder="Format : 1899-12-31T22:56:56" type="datetime-local"
                                                          th:field="*{checkOut}"/></p>
                         <p><label>Payment Type</label><input class="form-control" placeholder="Payment Type" type="text"
                                                              th:field="*{paymentType}"/></p>

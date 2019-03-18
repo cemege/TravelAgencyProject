@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDateTime;
+import java.time.temporal.Temporal;
+import java.time.temporal.TemporalAccessor;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -41,14 +44,8 @@ public class HotelServices {
 
         System.out.println(hotelDto.getAvailableTime());
 
-        Date available =  Date.valueOf(hotelDto.getAvailableTime());
+        hotel.setAvaliableTime(hotelDto.getAvailableTime());
 
-        Time test = Time.valueOf("15:12:21");
-
-        hotel.setAvaliableTime(test);
-
-
-        System.out.println(available.toLocalDate());
 
         return hotelRepo.save(hotel);
 

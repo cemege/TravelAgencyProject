@@ -1,6 +1,8 @@
 package com.travel.travel.entity;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -15,7 +17,10 @@ public class Reserve extends BaseEntity {
     @JoinColumn(name = "customerid")
     private Customer reservationAuthor;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime checkIn;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime checkOut;
     private String paymentType;
 

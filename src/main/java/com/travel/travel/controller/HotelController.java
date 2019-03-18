@@ -7,6 +7,7 @@ import com.travel.travel.viewmodel.HotelDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -39,7 +40,8 @@ public class HotelController {
 
     // POST /users         	- creates a new user
     @PostMapping
-    public String saveIt(@Valid @ModelAttribute HotelDto hotelDto, Model model) {
+    public String saveIt(@Valid @ModelAttribute HotelDto hotelDto, BindingResult bindingResult, Model model) {
+        System.out.println("Hotels save controller called.");
         hotelServices.saveHotel(hotelDto);
         return "redirect:/hotels/";
     }
@@ -50,7 +52,7 @@ public class HotelController {
         Optional<Hotel> customer = hotelServices.findById(id);
         hotelServices.delete(customer.get());
         model.addAttribute("hotels", hotelServices.getAllHotels());
-        return "customers/index";
+        return "redirect:/hotels";
     }
 
 }

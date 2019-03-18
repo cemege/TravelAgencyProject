@@ -2,9 +2,11 @@ package com.travel.travel.viewmodel;
 
 import com.travel.travel.config.Constants;
 import com.travel.travel.entity.Hotel;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
@@ -18,7 +20,10 @@ public class HotelDto {
     private String phoneNumber;
     private Integer numberOfRooms;
     private Integer ratingScore;
-    private String availableTime;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime availableTime;
+
 
     public HotelDto(Hotel hotel) {
 
@@ -29,7 +34,7 @@ public class HotelDto {
         this.phoneNumber = hotel.getPhoneNumber();
         this.numberOfRooms = hotel.getNumberOfRooms();
         this.ratingScore = hotel.getRatingScore();
-        this.availableTime = hotel.getAvaliableTime().toString();
+        this.availableTime = hotel.getAvaliableTime();
 
     }
 
@@ -93,11 +98,11 @@ public class HotelDto {
         this.ratingScore = ratingScore;
     }
 
-    public String getAvailableTime() {
+    public LocalDateTime getAvailableTime() {
         return availableTime;
     }
 
-    public void setAvailableTime(String avaliableTime) {
+    public void setAvailableTime(LocalDateTime avaliableTime) {
         this.availableTime = avaliableTime;
     }
 

@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.Entity;
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDateTime;
 
 @Entity
 public class Hotel extends BaseEntity {
@@ -16,7 +17,8 @@ public class Hotel extends BaseEntity {
     private int numberOfRooms;
     private int ratingScore;
 
-    private Time avaliableTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime avaliableTime;
 
 
     public String getName() {
@@ -67,11 +69,11 @@ public class Hotel extends BaseEntity {
         this.ratingScore = ratingScore;
     }
 
-    public Time getAvaliableTime() {
+    public LocalDateTime getAvaliableTime() {
         return avaliableTime;
     }
 
-    public void setAvaliableTime(Time avaliableTime) {
+    public void setAvaliableTime(LocalDateTime avaliableTime) {
         this.avaliableTime = avaliableTime;
     }
 }
