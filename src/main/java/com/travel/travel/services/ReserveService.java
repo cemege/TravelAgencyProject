@@ -18,19 +18,19 @@ public class ReserveService {
     @Autowired
     ReserveRepo reserveRepo;
 
+
+
     public Iterable<Reserve> getAllRevers(){
 
         return reserveRepo.findAll();
     }
 
     public List<Reserve> getUsersReserve(Long customerId){
-
         return reserveRepo.findByReservationAuthorId(customerId);
     }
 
 
     public void saveService(Reserve reserve) {
-
         reserveRepo.save(reserve);
     }
 

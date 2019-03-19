@@ -68,30 +68,11 @@ public class CustomerController {
     public String show(@PathVariable("id") Long id, Model model) {
         Optional<Customer> user = customerService.getCustomer(id);
 
-        model.addAttribute("customer", user);
-        model.addAttribute("reserves", getUserReserves(user.get().getId()));
+
+        model.addAttribute("customer", user.get());
+        model.addAttribute("reserves", reserveService.getUsersReserve(user.get().getId()));
         return "customers/show";
     }
-
-    public Iterable<Reserve> getUserReserves(long id) {
-        return reserveService.getUsersReserve(id);
-
-    }
-
-    /*public Iterable<Booking> getUserBookings(long user_id)
-    {
-        Iterator<Booking> itbookings = bookings.findAll().iterator();
-        List<Booking> bookingsList = new ArrayList<Booking>();
-
-        while(itbookings.hasNext())
-        {
-            Booking b = itbookings.next();
-            if(b.getUser().getId() == user_id)
-                bookingsList.add(b);
-        }
-
-        return bookingsList;
-    }*/
 
     // GET  /users/{id}/remove 	- removes the user with identifier {id}
     @RequestMapping(value="{id}/remove", method=RequestMethod.GET)
